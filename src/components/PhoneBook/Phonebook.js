@@ -19,10 +19,22 @@ class Phonebook extends Component {
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
                     />
+                    <h2>Number</h2>
+                    <input
+                        onInput={this.props.onInputNumber}
+                        value={this.props.state.number}
+                        type="tel"
+                        name="number"
+                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        required
+                    />
                     <button onClick={this.props.clickBtn} type='button'>Add contact</button>
                 </div>
                 <h2>Contacts</h2>
-                <Contact  contacts={this.props.state.contacts}/>
+                <Contact
+                    contacts={this.props.state.contacts}
+                />
             </div>
         );
     }

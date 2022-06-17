@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import Phonebook from './components/PhoneBook/Phonebook'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+    state = {
+        contacts: [],
+        name: ''
+    }
+
+    // onClickInput = (e) => {
+    //     const newName = e.target.value;
+    //     console.log(this.state.name)
+    //     this.setState((prevState) => ({
+    //         name: newName
+    //     }))
+    // }
+
+
+
+    render() {
+        return (
+            <div>
+                <Phonebook
+                    state={this.state}
+                    // onClickInput={this.onClickInput}
+                />
+            </div>
+        )
+    }
 }
 
-export default App;

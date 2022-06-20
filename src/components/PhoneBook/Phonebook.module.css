@@ -4,3 +4,19 @@
     justify-content: center;
     align-items: center;
 }
+.form {
+    padding: 15px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1px solid black;
+}
+.form label {
+    font-size: 25px;
+    font-weight: bold;
+}
+.form input {
+    margin: 15px 0;
+}

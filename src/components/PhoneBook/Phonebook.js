@@ -8,33 +8,36 @@ class Phonebook extends Component {
         return (
             <div className={s.wrapper}>
                 <h1>Phonebook</h1>
-                <div>
-                    <h2>Name</h2>
+                <form className={s.form} onSubmit={this.props.clickBtn}>
+                    <label>Name</label>
                     <input
                         onInput={this.props.onInputName}
                         value={this.props.state.name}
                         type="text"
                         name="name"
+                        placeholder="Enter you name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
                     />
-                    <h2>Number</h2>
+                    <label>Number</label>
                     <input
                         onInput={this.props.onInputNumber}
                         value={this.props.state.number}
                         type="tel"
                         name="number"
+                        placeholder="Enter you phone number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
                     />
-                    <button onClick={this.props.clickBtn} type='button'>Add contact</button>
-                </div>
+                    <button  type='submit'>Add contact</button>
+                </form>
                 <h2>Contacts</h2>
-                <Contact
-                    contacts={this.props.state.contacts}
-                />
+                    <Contact
+                        state={this.props.state}
+                        onFilter={this.props.onFilter}
+                    />
             </div>
         );
     }

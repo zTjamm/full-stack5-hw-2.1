@@ -30,7 +30,7 @@ export default class App extends Component {
     onFilter = () => {
         const {filter, contacts} = this.state;
         if (filter) {
-            return contacts.filter(name => name.name.toLowerCase().includes(filter));
+            return contacts.filter(name => name.name.toLowerCase().includes(filter.toLowerCase()));
         } else {
             return contacts;
         }

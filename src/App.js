@@ -1,57 +1,51 @@
-import React, {Component} from 'react'
-import Phonebook from './components/PhoneBook/Phonebook'
+import React, {Component} from 'react';
+import "./App.css"
+// import {nanoid} from "nanoid";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import Filter from "./components/Filter/Filter";
 
 export default class App extends Component {
     state = {
         contacts: [
-            {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-            {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-            {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-            {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+            {id:1, name: "Mikl", number: "555-55-55"},
+            {id:2, name: "Alesha", number: "777-77-77"},
+            {id:3, name: "Elena", number: "999-99-99"}
         ],
-        filter: '',
-        name: '',
-        number: ''
+        filter: ""
     }
-    onInputName = (e) => {
-        const {value} = e.currentTarget;
-        this.setState({
-                name: value
-            }
-        )
+    onInputFilter=(e)=>{
+        const value = e.currentTarget.value;
+        this.setState({filter: value})
     }
-    onInputNumber = (e) => {
-        const {value} = e.currentTarget;
-        this.setState({
-                number: value
-            }
-        )
+    onSubmit=(data)=>{
+        data.id =this.state.contacts.length+1;
+        this.setState({contacts: [...this.state.contacts , data]})
     }
-    clickBtn = (e) => {
-        e.preventDefault();
-        let a = {id: this.state.contacts.length + 1, name: this.state.name, number: this.state.number}
-        if (this.state.name === '' || this.state.number === "") {
-            alert("Заполните Имя и телефон")
-        } else {
-            this.setState((prevState => ({
-                contacts: [...this.state.contacts, a],
-                name: "",
-                number: ''
-            })))
+    onFilter=()=>{
+        const {filter,contacts}= this.state;
+        if(filter){
+            return contacts.filter(name =>name.name.toLowerCase().includes(filter));
+        }else {
+            return contacts;
         }
     }
-    onFilter = (e) => {
-        this.setState({filter: e.currentTarget.value})
-    }
     render() {
+        const filteredContacts = this.onFilter();
         return (
-            <div>
-                <Phonebook
+            <div className="wrapper">
+                <h1>Phonebook</h1>
+                <ContactForm
                     state={this.state}
-                    onInputName={this.onInputName}
-                    onInputNumber={this.onInputNumber}
-                    clickBtn={this.clickBtn}
-                    onFilter={this.onFilter}
+                    onSubmit={this.onSubmit}
+                />
+                <h2>Contacts</h2>
+                <Filter
+                    state={this.state}
+                    onInputFilter={this.onInputFilter}
+                />
+                <ContactList
+                    contacts={filteredContacts}
                 />
             </div>
         )

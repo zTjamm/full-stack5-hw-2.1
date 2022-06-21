@@ -1,0 +1,8 @@
+.items{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.items input{
+    margin: 15px 0;
+}

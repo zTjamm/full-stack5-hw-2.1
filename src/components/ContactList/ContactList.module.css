@@ -1,0 +1,9 @@
+.item{
+   display: flex;
+}
+.item p{
+    width: 70%;
+}
+.btn{
+    margin-left: 35px;
+}

@@ -1,9 +1,18 @@
 .form{
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
 }
 .form input{
     margin: 10px 0;
+}
+.form button{
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 4px;
 }

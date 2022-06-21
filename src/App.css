@@ -3,10 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+h1{
+  font-size: 45px;
+}
+label{
+  font-size: 25px;
+  font-weight: bold;
+}
+p{
+  font-style: italic;
+}
 .wrapper{
   width: 600px;
-  margin: 0 auto;
+  margin: 25px auto;
+  padding: 25px 0;
+  background: burlywood;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid black;
 }
